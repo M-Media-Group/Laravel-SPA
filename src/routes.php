@@ -4,6 +4,19 @@
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Mmedia\LaravelSpa\LaravelSpaFacade;
+
+Route::get('login', function () {
+    return redirect(
+        LaravelSpaFacade::getSpaUrlForPath('login')
+    );
+})->name('login');
+
+Route::get('register', function () {
+    return redirect(
+        LaravelSpaFacade::getSpaUrlForPath('register')
+    );
+})->name('register');
 
 if (config('laravel-spa.check_email_exists_endpoint')) {
     Route::middleware('web')->post(config('laravel-spa.route_paths.email_exists'), function (Request $request) {

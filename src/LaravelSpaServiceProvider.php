@@ -66,9 +66,9 @@ class LaravelSpaServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__ . '/../config/config.php', 'laravel-spa');
 
         // Register the main class to use with the facade
-        // $this->app->singleton('laravel-spa', function () {
-        //     return new LaravelSpa;
-        // });
+        $this->app->singleton(LaravelSpa::class, function () {
+            return new LaravelSpa;
+        });
     }
 
     /**
@@ -164,34 +164,40 @@ class LaravelSpaServiceProvider extends ServiceProvider
      */
     private function setupFortifyViews()
     {
-        $spa_url = config('laravel-spa.spa_url');
-
-        Fortify::loginView(function () use ($spa_url) {
-            return redirect($spa_url . '/' . config('laravel-spa.route_paths.login'));
+        Fortify::loginView(function () {
+            return redirect(LaravelSpaFacade::getSpaUrlForPath('login'));
         });
 
-        Fortify::registerView(function () use ($spa_url) {
-            return redirect($spa_url . '/' . config('laravel-spa.route_paths.register'));
+        Fortify::registerView(function () {
+            return redirect(LaravelSpaFacade::getSpaUrlForPath('register'));
         });
 
-        Fortify::twoFactorChallengeView(function () use ($spa_url) {
-            return redirect($spa_url . '/' . config('laravel-spa.route_paths.two_factor_challenge'));
+        Fortify::twoFactorChallengeView(function () {
+            return redirect(
+                LaravelSpaFacade::getSpaUrlForPath('two_factor_challenge')
+            );
         });
 
-        Fortify::requestPasswordResetLinkView(function () use ($spa_url) {
-            return redirect($spa_url . '/' . config('laravel-spa.route_paths.forgot_password'));
+        Fortify::requestPasswordResetLinkView(function () {
+            return redirect(
+                LaravelSpaFacade::getSpaUrlForPath('forgot_password')
+            );
         });
 
-        Fortify::resetPasswordView(function ($request) use ($spa_url) {
-            return redirect($spa_url . '/' . config('laravel-spa.route_paths.reset_password') . '?token=' . $request->route('token'));
+        Fortify::resetPasswordView(function ($request) {
+            return redirect(LaravelSpaFacade::getSpaUrlForPath('reset_password') . '?token=' . $request->route('token'));
         });
 
-        Fortify::verifyEmailView(function () use ($spa_url) {
-            return redirect($spa_url . '/' . config('laravel-spa.route_paths.verify_email'));
+        Fortify::verifyEmailView(function () {
+            return redirect(
+                LaravelSpaFacade::getSpaUrlForPath('verify_email')
+            );
         });
 
-        Fortify::confirmPasswordView(function () use ($spa_url) {
-            return redirect($spa_url . '/' . config('laravel-spa.route_paths.confirm_password'));
+        Fortify::confirmPasswordView(function () {
+            return redirect(
+                LaravelSpaFacade::getSpaUrlForPath('confirm_password')
+            );
         });
     }
 }

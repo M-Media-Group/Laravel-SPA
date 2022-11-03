@@ -5,7 +5,7 @@ namespace Mmedia\LaravelSpa;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @see \Mmedia\LaravelSpa\Skeleton\SkeletonClass
+ * @see \Mmedia\LaravelSpa\LaravelSpa
  */
 class LaravelSpaFacade extends Facade
 {
