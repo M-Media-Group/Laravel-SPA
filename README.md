@@ -11,7 +11,7 @@ Because Fortify is designed to be frontend agnostic, it requires some configurat
 - Forces CORS with_credentials to true
 - Adds API route to get currently authenticated user (both for cookie based auth and API token based auth), /api/user
 - Adds optional route to check if email exists (like Google login where it asks you for your email, and depending on if it exists or not, it will either ask you for password or create a new account)
-- Forces Fortify config option "views" to false
+- Forces Fortify config option "views" to true, where each view redirects to the SPA as defined in the config (see below)
 - Adds loginView, registerView, twoFactorChallengeView, requestPasswordResetLinkView, resetPasswordView, verifyEmailView, and confirmPasswordView definitions for Fortify that redirect to your SPA app, with fully configurable paths (useful for links sent in emails, for example)
 
 ## Installation

@@ -48,7 +48,7 @@ class LaravelSpaServiceProvider extends ServiceProvider
         }
 
         $this->setCorsOptions();
-        $this->setFortifyViewsToFalse();
+        $this->setFortifyViewsToTrue();
 
         RateLimiter::for(config('laravel-spa.route_paths.email_exists'), function (Request $request) {
             return Limit::perMinute(5)->by($request->email . $request->ip());
@@ -151,13 +151,13 @@ class LaravelSpaServiceProvider extends ServiceProvider
     }
 
     /**
-     * Force the Fortify views config option to be false
+     * Force the Fortify views config option to be true
      *
      * @return void
      */
-    private function setFortifyViewsToFalse()
+    private function setFortifyViewsToTrue()
     {
-        config(['fortify.views' => false]);
+        config(['fortify.views' => true]);
     }
 
     /**
