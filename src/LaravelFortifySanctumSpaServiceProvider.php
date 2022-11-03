@@ -50,7 +50,7 @@ class LaravelFortifySanctumSpaServiceProvider extends ServiceProvider
         $this->setCorsOptions();
         $this->setFortifyViewsToFalse();
 
-        RateLimiter::for(config('spa.route_paths.email_exists'), function (Request $request) {
+        RateLimiter::for(config('laravel-spa.route_paths.email_exists'), function (Request $request) {
             return Limit::perMinute(5)->by($request->email . $request->ip());
         });
 
@@ -109,8 +109,8 @@ class LaravelFortifySanctumSpaServiceProvider extends ServiceProvider
             'user/profile-information'
         ];
 
-        if (config('spa.check_email_exists_endpoint')) {
-            $additionalPaths[] = config('spa.route_paths.email_exists');
+        if (config('laravel-spa.check_email_exists_endpoint')) {
+            $additionalPaths[] = config('laravel-spa.route_paths.email_exists');
         }
 
         $paths = array_merge($paths, $additionalPaths);
@@ -129,7 +129,7 @@ class LaravelFortifySanctumSpaServiceProvider extends ServiceProvider
         // The current allowed origins in the config
         $allowedOrigins = $this->app['config']->get('cors.allowed_origins');
 
-        $additionalAllowedOrigins = [config('app.url'), config('spa.spa_url')];
+        $additionalAllowedOrigins = [config('app.url'), config('laravel-spa.spa_url')];
 
         $allowedOrigins = array_merge($allowedOrigins, $additionalAllowedOrigins);
 
@@ -164,34 +164,34 @@ class LaravelFortifySanctumSpaServiceProvider extends ServiceProvider
      */
     private function setupFortifyViews()
     {
-        $spa_url = config('spa.spa_url');
+        $spa_url = config('laravel-spa.spa_url');
 
         Fortify::loginView(function () use ($spa_url) {
-            return redirect($spa_url . '/' . config('spa.route_paths.login'));
+            return redirect($spa_url . '/' . config('laravel-spa.route_paths.login'));
         });
 
         Fortify::registerView(function () use ($spa_url) {
-            return redirect($spa_url . '/' . config('spa.route_paths.register'));
+            return redirect($spa_url . '/' . config('laravel-spa.route_paths.register'));
         });
 
         Fortify::twoFactorChallengeView(function () use ($spa_url) {
-            return redirect($spa_url . '/' . config('spa.route_paths.two_factor_challenge'));
+            return redirect($spa_url . '/' . config('laravel-spa.route_paths.two_factor_challenge'));
         });
 
         Fortify::requestPasswordResetLinkView(function () use ($spa_url) {
-            return redirect($spa_url . '/' . config('spa.route_paths.forgot_password'));
+            return redirect($spa_url . '/' . config('laravel-spa.route_paths.forgot_password'));
         });
 
         Fortify::resetPasswordView(function ($request) use ($spa_url) {
-            return redirect($spa_url . '/' . config('spa.route_paths.reset_password') . '?token=' . $request->route('token'));
+            return redirect($spa_url . '/' . config('laravel-spa.route_paths.reset_password') . '?token=' . $request->route('token'));
         });
 
         Fortify::verifyEmailView(function () use ($spa_url) {
-            return redirect($spa_url . '/' . config('spa.route_paths.verify_email'));
+            return redirect($spa_url . '/' . config('laravel-spa.route_paths.verify_email'));
         });
 
         Fortify::confirmPasswordView(function () use ($spa_url) {
-            return redirect($spa_url . '/' . config('spa.route_paths.confirm_password'));
+            return redirect($spa_url . '/' . config('laravel-spa.route_paths.confirm_password'));
         });
     }
 }

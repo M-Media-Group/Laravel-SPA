@@ -9,7 +9,7 @@ This is where your description should go. Try and limit it to a paragraph or two
 ### What this package does
 - Adds CORS paths for Sanctum cookie and Fortify routes
 - Forces CORS with_credentials to true
-- Adds API route to get currently authenticated user (both for cookie based auth and API token based auth)
+- Adds API route to get currently authenticated user (both for cookie based auth and API token based auth), /api/user
 - Adds optional route to check if email exists (like Google login where it asks you for your email, and depending on if it exists or not, it will either ask you for password or create a new account)
 - Forces Fortify config option "views" to false
 
