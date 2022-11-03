@@ -16,6 +16,6 @@ class LaravelSpaFacade extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'LaravelSpa';
+        return LaravelSpa::class;
     }
 }
