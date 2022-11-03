@@ -4,14 +4,15 @@
 [![Total Downloads](https://img.shields.io/packagist/dt/mmedia/laravel-spa.svg?style=flat-square)](https://packagist.org/packages/mmedia/laravel-spa)
 ![GitHub Actions](https://github.com/mmedia/laravel-spa/actions/workflows/main.yml/badge.svg)
 
-This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what PSRs you support to avoid any confusion with users and contributors.
+Because Fortify is designed to be frontend agnostic, it requires some configuration if you'd like to use it with an SPA and Sanctum. This package provides the required configurations for that.
 
 ### What this package does
-- Adds CORS paths for Sanctum cookie and Fortify routes
+- Adds CORS paths for Sanctum cookie and Fortify routes, including login, logout, and more
 - Forces CORS with_credentials to true
 - Adds API route to get currently authenticated user (both for cookie based auth and API token based auth), /api/user
 - Adds optional route to check if email exists (like Google login where it asks you for your email, and depending on if it exists or not, it will either ask you for password or create a new account)
 - Forces Fortify config option "views" to false
+- Adds loginView, registerView, twoFactorChallengeView, requestPasswordResetLinkView, resetPasswordView, verifyEmailView, and confirmPasswordView definitions for Fortify that redirect to your SPA app, with fully configurable paths (useful for links sent in emails, for example)
 
 ## Installation
 
@@ -23,8 +24,10 @@ composer require mmedia/laravel-spa
 
 ## Usage
 
-```php
-// Usage description here
+The service provider will automatically add the functionality as described above. You can publish the config file with:
+
+```bash
+php artisan vendor:publish --provider="Mmedia\LaravelSpa\LaravelSpaServiceProvider" --tag="config"
 ```
 
 ### Testing

@@ -1,13 +1,13 @@
 <?php
 
-namespace Mmedia\LaravelFortifySanctumSpa;
+namespace Mmedia\LaravelSpa;
 
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @see \Mmedia\LaravelFortifySanctumSpa\Skeleton\SkeletonClass
+ * @see \Mmedia\LaravelSpa\Skeleton\SkeletonClass
  */
-class LaravelFortifySanctumSpaFacade extends Facade
+class LaravelSpaFacade extends Facade
 {
     /**
      * Get the registered name of the component.

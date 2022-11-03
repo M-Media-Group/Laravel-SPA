@@ -26,12 +26,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Mmedia\\LaravelFortifySanctumSpa\\": "src"
+            "Mmedia\\LaravelSpa\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Mmedia\\LaravelFortifySanctumSpa\\Tests\\": "tests"
+            "Mmedia\\LaravelSpa\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -44,10 +44,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Mmedia\\LaravelFortifySanctumSpa\\LaravelFortifySanctumSpaServiceProvider"
+                "Mmedia\\LaravelSpa\\LaravelSpaServiceProvider"
             ],
             "aliases": {
-                "LaravelFortifySanctumSpa": "Mmedia\\LaravelFortifySanctumSpa\\LaravelFortifySanctumSpaFacade"
+                "LaravelSpa": "Mmedia\\LaravelSpa\\LaravelSpaFacade"
             }
         }
     }

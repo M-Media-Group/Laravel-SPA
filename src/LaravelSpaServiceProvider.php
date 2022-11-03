@@ -1,6 +1,6 @@
 <?php
 
-namespace Mmedia\LaravelFortifySanctumSpa;
+namespace Mmedia\LaravelSpa;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\RateLimiter;
@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Cache\RateLimiting\Limit;
 use Laravel\Fortify\Fortify;
 
-class LaravelFortifySanctumSpaServiceProvider extends ServiceProvider
+class LaravelSpaServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application services.
@@ -67,7 +67,7 @@ class LaravelFortifySanctumSpaServiceProvider extends ServiceProvider
 
         // Register the main class to use with the facade
         // $this->app->singleton('laravel-spa', function () {
-        //     return new LaravelFortifySanctumSpa;
+        //     return new LaravelSpa;
         // });
     }
 
