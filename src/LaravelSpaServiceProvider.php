@@ -161,7 +161,7 @@ class LaravelSpaServiceProvider extends ServiceProvider
     }
 
     /**
-     * Set up the Fortify views. Even though we force the views to be off, sometimes these are required (for example when emails are being sent by Fortify)
+     * Set up the Fortify view redirects
      *
      * @return void
      */

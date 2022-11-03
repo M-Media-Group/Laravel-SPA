@@ -1,6 +1,7 @@
 <?php
 // Even though it seems that the User is not used here in the callback function, we need to have it so that Laravel can resolve the user variable in the path
 
+use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Mmedia\LaravelSpa\LaravelSpaFacade;
@@ -18,9 +19,13 @@ Route::get('register', function () {
 })->name('register');
 
 if (config('laravel-spa.check_email_exists_endpoint')) {
-    Route::middleware('web')->post(config('laravel-spa.route_paths.email_exists'), function () {
-        return response()->noContent(200);
-    });
+    Route::middleware('web')->post(
+        config('laravel-spa.route_paths.email_exists'),
+        // Even though it seems we don't use the User variable here, we need to have it so that Laravel can resolve the user variable in the path
+        function (Request $request, User $user) {
+            return response()->noContent(200);
+        }
+    );
 }
 
 Route::middleware('api', 'auth:sanctum')->prefix('api')->group(function () {
