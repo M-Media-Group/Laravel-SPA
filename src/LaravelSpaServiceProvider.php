@@ -47,9 +47,6 @@ class LaravelSpaServiceProvider extends ServiceProvider
             // $this->commands([]);
         }
 
-        $this->setCorsOptions();
-        $this->setFortifyViewsToTrue();
-
         RateLimiter::for(config('laravel-spa.route_paths.email_exists'), function (Request $request) {
             return Limit::perMinute(5)->by($request->email . $request->ip());
         });
@@ -69,6 +66,9 @@ class LaravelSpaServiceProvider extends ServiceProvider
         $this->app->singleton(LaravelSpa::class, function () {
             return new LaravelSpa;
         });
+
+        $this->setCorsOptions();
+        $this->setFortifyViewsToTrue();
     }
 
     /**
