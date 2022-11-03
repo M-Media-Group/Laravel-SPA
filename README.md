@@ -4,7 +4,7 @@
 [![Total Downloads](https://img.shields.io/packagist/dt/mmedia/laravel-spa.svg?style=flat-square)](https://packagist.org/packages/mmedia/laravel-spa)
 ![GitHub Actions](https://github.com/mmedia/laravel-spa/actions/workflows/main.yml/badge.svg)
 
-Because Fortify is designed to be frontend agnostic, it requires some configuration if you'd like to use it with an SPA and Sanctum. This package provides the required configurations for that.
+Because Fortify is designed to be frontend agnostic, it requires some configuration if you'd like to use it with an SPA on a subdomain and Sanctum. This package provides the required configurations for that.
 
 ### What this package does
 - Adds CORS paths for Sanctum cookie and Fortify routes, including login, logout, and more

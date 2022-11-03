@@ -188,7 +188,7 @@ class LaravelSpaServiceProvider extends ServiceProvider
         });
 
         Fortify::resetPasswordView(function ($request) {
-            return redirect(LaravelSpaFacade::getSpaUrlForPath('reset_password') . '?token=' . $request->route('token'));
+            return redirect(LaravelSpaFacade::getSpaUrlForPath('reset_password') . '?token=' . $request->route('token') . '&email=' . $request->route('email'));
         });
 
         Fortify::verifyEmailView(function () {
