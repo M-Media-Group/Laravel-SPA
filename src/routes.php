@@ -1,7 +1,6 @@
 <?php
 // Even though it seems that the User is not used here in the callback function, we need to have it so that Laravel can resolve the user variable in the path
 
-use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Mmedia\LaravelSpa\LaravelSpaFacade;
