@@ -111,8 +111,8 @@ class LaravelSpaServiceProvider extends ServiceProvider
 
         if (config('laravel-spa.check_email_exists_endpoint')) {
             $path = config('laravel-spa.route_paths.email_exists');
-            // Replace any {variable} with *
-            $path = preg_replace('/\{[a-zA-Z0-9]+\}/', '*', $path);
+            // Replace any {variable:slug} with *
+            $path = preg_replace('/\{.*?\}/', '*', $path);
             $additionalPaths[] = $path;
         }
 

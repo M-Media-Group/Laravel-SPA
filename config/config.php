@@ -34,6 +34,6 @@ return [
         /**
          * If you enable the check_email_exists_endpoint, this is the path that will be used for that endpoint
          */
-        'email_exists' => 'email-exists/{email}',
+        'email_exists' => 'email-exists/{user:email}',
     ]
 ];

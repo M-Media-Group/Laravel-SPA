@@ -19,11 +19,7 @@ Route::get('register', function () {
 })->name('register');
 
 if (config('laravel-spa.check_email_exists_endpoint')) {
-    Route::middleware('web')->post(config('laravel-spa.route_paths.email_exists'), function (Request $request) {
-        $request->validate([
-            'email' => 'required|email',
-        ]);
-        User::where('email', $request->email)->firstOrFail();
+    Route::middleware('web')->post(config('laravel-spa.route_paths.email_exists'), function () {
         return response()->noContent(200);
     });
 }
