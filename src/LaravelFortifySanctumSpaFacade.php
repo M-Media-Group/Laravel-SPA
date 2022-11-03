@@ -16,6 +16,6 @@ class LaravelFortifySanctumSpaFacade extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'laravel-fortify-sanctum-spa';
+        return 'laravel-spa';
     }
 }

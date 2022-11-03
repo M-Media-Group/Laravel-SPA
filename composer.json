@@ -1,11 +1,11 @@
 {
-    "name": "mmedia/laravel-fortify-sanctum-spa",
+    "name": "mmedia/laravel-spa",
     "description": "Add required CORS settings and some routes to help with SPA authentication using Fortify and Sanctum",
     "keywords": [
         "mmedia",
-        "laravel-fortify-sanctum-spa"
+        "laravel-spa"
     ],
-    "homepage": "https://github.com/mmedia/laravel-fortify-sanctum-spa",
+    "homepage": "https://github.com/M-Media-Group/laravel-spa",
     "license": "MIT",
     "type": "library",
     "authors": [
@@ -37,7 +37,6 @@
     "scripts": {
         "test": "vendor/bin/phpunit",
         "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
-
     },
     "config": {
         "sort-packages": true

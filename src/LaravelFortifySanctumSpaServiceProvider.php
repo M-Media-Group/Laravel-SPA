@@ -18,29 +18,29 @@ class LaravelFortifySanctumSpaServiceProvider extends ServiceProvider
         /*
          * Optional methods to load your package assets
          */
-        // $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'laravel-fortify-sanctum-spa');
-        // $this->loadViewsFrom(__DIR__.'/../resources/views', 'laravel-fortify-sanctum-spa');
+        // $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'laravel-spa');
+        // $this->loadViewsFrom(__DIR__.'/../resources/views', 'laravel-spa');
         // $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
         $this->loadRoutesFrom(__DIR__ . '/routes.php');
 
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__ . '/../config/config.php' => config_path('laravel-fortify-sanctum-spa.php'),
+                __DIR__ . '/../config/config.php' => config_path('laravel-spa.php'),
             ], 'config');
 
             // Publishing the views.
             /*$this->publishes([
-                __DIR__.'/../resources/views' => resource_path('views/vendor/laravel-fortify-sanctum-spa'),
+                __DIR__.'/../resources/views' => resource_path('views/vendor/laravel-spa'),
             ], 'views');*/
 
             // Publishing assets.
             /*$this->publishes([
-                __DIR__.'/../resources/assets' => public_path('vendor/laravel-fortify-sanctum-spa'),
+                __DIR__.'/../resources/assets' => public_path('vendor/laravel-spa'),
             ], 'assets');*/
 
             // Publishing the translation files.
             /*$this->publishes([
-                __DIR__.'/../resources/lang' => resource_path('lang/vendor/laravel-fortify-sanctum-spa'),
+                __DIR__.'/../resources/lang' => resource_path('lang/vendor/laravel-spa'),
             ], 'lang');*/
 
             // Registering package commands.
@@ -63,10 +63,10 @@ class LaravelFortifySanctumSpaServiceProvider extends ServiceProvider
     public function register()
     {
         // Automatically apply the package configuration
-        $this->mergeConfigFrom(__DIR__ . '/../config/config.php', 'laravel-fortify-sanctum-spa');
+        $this->mergeConfigFrom(__DIR__ . '/../config/config.php', 'laravel-spa');
 
         // Register the main class to use with the facade
-        // $this->app->singleton('laravel-fortify-sanctum-spa', function () {
+        // $this->app->singleton('laravel-spa', function () {
         //     return new LaravelFortifySanctumSpa;
         // });
     }
