@@ -106,6 +106,7 @@ class LaravelSpaServiceProvider extends ServiceProvider
             'user/two-factor-authentication',
             'user/confirmed-two-factor-authentication',
             'user/two-factor-recovery-codes',
+            'user/confirmed-password-status',
             'user/profile-information'
         ];
 
