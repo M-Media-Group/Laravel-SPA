@@ -6,7 +6,6 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Http\Request;
 use Illuminate\Cache\RateLimiting\Limit;
-use Illuminate\Foundation\Http\Kernel;
 use Laravel\Fortify\Fortify;
 use Mmedia\LaravelSpa\Http\Middleware\SetLocale;
 
@@ -15,7 +14,7 @@ class LaravelSpaServiceProvider extends ServiceProvider
     /**
      * Bootstrap the application services.
      */
-    public function boot(Kernel $kernel)
+    public function boot()
     {
         /*
          * Optional methods to load your package assets
@@ -56,7 +55,8 @@ class LaravelSpaServiceProvider extends ServiceProvider
         $this->setupFortifyViews();
 
         // Register the SetLocale middleware globally in the kernel
-        $kernel->pushMiddleware(SetLocale::class);
+        $this->app->make(\Illuminate\Contracts\Http\Kernel::class)
+            ->pushMiddleware(SetLocale::class);
     }
 
     /**
