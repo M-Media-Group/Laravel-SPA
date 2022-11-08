@@ -30,14 +30,7 @@ The service provider will automatically add the functionality as described above
 php artisan vendor:publish --provider="Mmedia\LaravelSpa\LaravelSpaServiceProvider" --tag="config"
 ```
 
-You can also import the SetLocale middleware in your app/Http/Kernel.php file:
-
-```php
-    protected $middleware = [
-        ..., // other middleware
-        \Mmedia\LaravelSpa\Http\Middleware\SetLocale::class,
-    ];
-```
+The package will automatically add the SetLocale global middleware, so you can change your app locale with the Accept-Language header.
 
 ### Testing
 
