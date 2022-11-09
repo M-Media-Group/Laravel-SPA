@@ -74,6 +74,7 @@ class LaravelSpaServiceProvider extends ServiceProvider
 
         $this->setCorsOptions();
         $this->setFortifyViewsToTrue();
+        $this->setFortifyHomeToSpaUrl();
     }
 
     /**
@@ -164,6 +165,21 @@ class LaravelSpaServiceProvider extends ServiceProvider
     private function setFortifyViewsToTrue()
     {
         config(['fortify.views' => true]);
+    }
+
+    /**
+     * Force the url of the Fortify home option to start with the SPA URL
+     *
+     * @return void
+     */
+    private function setFortifyHomeToSpaUrl()
+    {
+        $currentPath = config('fortify.home');
+        // If the currentPath already starts with a URL, don't change it
+        if (preg_match('/^https?:\/\//', $currentPath)) {
+            return;
+        }
+        config(['fortify.home' => config('laravel-spa.spa_url') . $currentPath]);
     }
 
     /**
