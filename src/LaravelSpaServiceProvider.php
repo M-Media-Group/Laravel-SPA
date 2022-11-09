@@ -168,7 +168,7 @@ class LaravelSpaServiceProvider extends ServiceProvider
     }
 
     /**
-     * Force the url of the Fortify home option to start with the SPA URL
+     * Force the value of the Fortify home option to start with the SPA URL if its not already a URL
      *
      * @return void
      */
