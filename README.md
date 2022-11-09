@@ -13,6 +13,7 @@ Because Fortify is designed to be frontend agnostic, it requires some configurat
 - Adds optional route to check if email exists (like Google login where it asks you for your email, and depending on if it exists or not, it will either ask you for password or create a new account)
 - Forces Fortify config option "views" to true, where each view redirects to the SPA as defined in the config (see below)
 - Adds loginView, registerView, twoFactorChallengeView, requestPasswordResetLinkView, resetPasswordView, verifyEmailView, and confirmPasswordView definitions for Fortify that redirect to your SPA app, with fully configurable paths (useful for links sent in emails, for example)
+- Forces the Fortify home config option to keep the path defined but prepend it with your SPA URL, or, if its already a URL, keep it as such
 
 ## Installation
 
