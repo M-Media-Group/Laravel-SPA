@@ -6,8 +6,10 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Http\Request;
 use Illuminate\Cache\RateLimiting\Limit;
+use Illuminate\Contracts\Debug\ExceptionHandler;
 use Laravel\Fortify\Fortify;
 use Mmedia\LaravelSpa\Http\Middleware\SetLocale;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class LaravelSpaServiceProvider extends ServiceProvider
 {
@@ -75,6 +77,22 @@ class LaravelSpaServiceProvider extends ServiceProvider
         $this->setCorsOptions();
         $this->setFortifyViewsToTrue();
         $this->setFortifyHomeToSpaUrl();
+        $this->redirectNotFoundToSpa();
+    }
+
+    /**
+     * Redirect any non API 404 exceptions to the SPA
+     *
+     * @return void
+     */
+    private function redirectNotFoundToSpa()
+    {
+        $errorHandler = $this->app->make(ExceptionHandler::class);
+        $errorHandler->renderable(function (NotFoundHttpException $e, $request) {
+            if (!$request->is('api/*')) {
+                return redirect()->to(config('laravel-spa.spa_url') . $request->getRequestUri());
+            }
+        });
     }
 
     /**

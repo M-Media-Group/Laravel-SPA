@@ -15,6 +15,7 @@ Because Fortify is designed to be frontend agnostic, it requires some configurat
 - Adds loginView, registerView, twoFactorChallengeView, requestPasswordResetLinkView, resetPasswordView, verifyEmailView, and confirmPasswordView definitions for Fortify that redirect to your SPA app, with fully configurable paths (useful for links sent in emails, for example)
 - Forces the Fortify home config option to keep the path defined but prepend it with your SPA URL, or, if its already a URL, keep it as such
 - Allows setting the app language via Accept-Language header
+- Redirects any non-API route 404s to your SPA app (which also means that if you don't have a home route, it will redirect to your SPA app home)
 
 ## Installation
 
