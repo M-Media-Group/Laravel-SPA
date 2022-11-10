@@ -24,7 +24,10 @@ class LaravelSpaServiceProvider extends ServiceProvider
         // $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'laravel-spa');
         // $this->loadViewsFrom(__DIR__.'/../resources/views', 'laravel-spa');
         // $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
-        $this->loadRoutesFrom(__DIR__ . '/routes.php');
+
+        if (!app()->routesAreCached()) {
+            $this->loadRoutesFrom(__DIR__ . '/routes.php');
+        }
 
         if ($this->app->runningInConsole()) {
             $this->publishes([
@@ -66,17 +69,21 @@ class LaravelSpaServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        // Automatically apply the package configuration
-        $this->mergeConfigFrom(__DIR__ . '/../config/config.php', 'laravel-spa');
+        if (!app()->configurationIsCached()) {
+            // Automatically apply the package configuration
+            $this->mergeConfigFrom(__DIR__ . '/../config/config.php', 'laravel-spa');
+        }
 
         // Register the main class to use with the facade
         $this->app->singleton(LaravelSpa::class, function () {
             return new LaravelSpa;
         });
 
-        $this->setCorsOptions();
-        $this->setFortifyViewsToTrue();
-        $this->setFortifyHomeToSpaUrl();
+        if (!app()->configurationIsCached()) {
+            $this->setCorsOptions();
+            $this->setFortifyViewsToTrue();
+            $this->setFortifyHomeToSpaUrl();
+        }
         $this->redirectNotFoundToSpa();
     }
 
