@@ -32,7 +32,10 @@ Route::middleware('web', 'auth:sanctum')->group(function () {
             'name' => 'required|string|max:255',
         ]);
         $token = $request->user()->createToken($request->name);
-        return ['token' => $token->plainTextToken];
+        return [
+            ...$token->accessToken->toArray(),
+            'token' => $token->plainTextToken
+        ];
     });
 
     Route::delete('user/personal-access-tokens/{token_id}', function (Request $request, $tokenId) {
