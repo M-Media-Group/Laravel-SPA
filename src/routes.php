@@ -33,3 +33,19 @@ Route::middleware('api', 'auth:sanctum')->prefix('api')->group(function () {
         return $request->user();
     });
 });
+
+Route::middleware('web', 'auth:sanctum')->group(function () {
+    Route::get('user/personal-access-tokens', function (Request $request) {
+        return $request->user()->tokens;
+    });
+
+    Route::post('user/personal-access-tokens', function (Request $request) {
+        $token = $request->user()->createToken($request->token_name);
+        return ['token' => $token->plainTextToken];
+    });
+
+    Route::delete('user/personal-access-tokens/{token_id}', function (Request $request, $tokenId) {
+        $request->user()->tokens()->where('id', $tokenId)->delete();
+        return response()->noContent();
+    });
+});
