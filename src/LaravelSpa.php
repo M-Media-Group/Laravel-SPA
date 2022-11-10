@@ -13,12 +13,12 @@ class LaravelSpa
 
     public function getRoutePaths()
     {
-        return config('laravel-spa.route_paths');
+        return config('laravel-spa.spa_paths');
     }
 
     public function getRoutePath(string $path): string
     {
-        return config('laravel-spa.route_paths.' . $path);
+        return config('laravel-spa.spa_paths.' . $path);
     }
 
     public function getSpaUrlForPath(string $path): string

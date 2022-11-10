@@ -20,9 +20,9 @@ return [
     "check_email_exists_endpoint" => false,
 
     /**
-     * The route paths for Fortify views. Even though we disable the views in this package, sometimes those routes are used in email links, for example.
+     * The route paths for Fortify views. Even though we disable the views in this package, sometimes those routes are used in email links, for example. The value of each is the path that Laravel will redirect to within your SPA.
      */
-    "route_paths" => [
+    "spa_paths" => [
         'login' => 'login',
         'register' => 'register',
         'verify_email' => 'email/verify',
@@ -30,10 +30,20 @@ return [
         'reset_password' => 'reset-password',
         'confirm_password' => 'user/confirm-password',
         'two_factor_challenge' => 'two-factor-challenge',
+    ],
 
+    /**
+     * The paths for API endpoints.
+     */
+    "api_paths" => [
         /**
          * If you enable the check_email_exists_endpoint, this is the path that will be used for that endpoint
          */
         'email_exists' => 'email-exists/{user:email}',
-    ]
+    ],
+
+    /**
+     * Allow users to create personal access tokens. Existing tokens will still be valid.
+     */
+    "allow_creating_personal_access_tokens" => true,
 ];

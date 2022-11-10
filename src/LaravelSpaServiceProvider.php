@@ -53,7 +53,7 @@ class LaravelSpaServiceProvider extends ServiceProvider
             // $this->commands([]);
         }
 
-        RateLimiter::for(config('laravel-spa.route_paths.email_exists'), function (Request $request) {
+        RateLimiter::for(config('laravel-spa.api_paths.email_exists'), function (Request $request) {
             return Limit::perMinute(5)->by($request->email . $request->ip());
         });
 
@@ -144,7 +144,7 @@ class LaravelSpaServiceProvider extends ServiceProvider
         ];
 
         if (config('laravel-spa.check_email_exists_endpoint')) {
-            $path = config('laravel-spa.route_paths.email_exists');
+            $path = config('laravel-spa.api_paths.email_exists');
             // Replace any {variable:slug} with *
             $path = preg_replace('/\{.*?\}/', '*', $path);
             $additionalPaths[] = $path;
