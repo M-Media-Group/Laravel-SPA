@@ -139,7 +139,7 @@ class LaravelSpaServiceProvider extends ServiceProvider
             'user/two-factor-recovery-codes',
             'user/confirmed-password-status',
             'user/profile-information',
-            'oauth/personal-access-tokens'
+            'user/personal-access-tokens'
         ];
 
         if (config('laravel-spa.check_email_exists_endpoint')) {
