@@ -28,7 +28,10 @@ Route::middleware('web', 'auth:sanctum')->group(function () {
     });
 
     Route::post('user/personal-access-tokens', function (Request $request) {
-        $token = $request->user()->createToken($request->token_name);
+        $request->validate([
+            'name' => 'required|string|max:255',
+        ]);
+        $token = $request->user()->createToken($request->name);
         return ['token' => $token->plainTextToken];
     });
 
