@@ -20,7 +20,7 @@ return [
     "check_email_exists_endpoint" => false,
 
     /**
-     * The route paths for Fortify views. Even though we disable the views in this package, sometimes those routes are used in email links, for example. The value of each is the path that Laravel will redirect to within your SPA.
+     * The route paths for Fortify views. The value of each is the path that Laravel will redirect to within your SPA.
      */
     "spa_paths" => [
         'login' => 'login',
