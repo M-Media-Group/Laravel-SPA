@@ -96,7 +96,7 @@ class LaravelSpaServiceProvider extends ServiceProvider
     {
         $errorHandler = $this->app->make(ExceptionHandler::class);
         $errorHandler->renderable(function (NotFoundHttpException $e, $request) {
-            if (!$request->is('api/*')) {
+            if (!$request->is('api/*') && !$request->wantsJson()) {
                 return redirect()->to(config('laravel-spa.spa_url') . $request->getRequestUri());
             }
         });
