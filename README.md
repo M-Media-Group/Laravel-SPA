@@ -2,7 +2,6 @@
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/mmedia/laravel-spa.svg?style=flat-square)](https://packagist.org/packages/mmedia/laravel-spa)
 [![Total Downloads](https://img.shields.io/packagist/dt/mmedia/laravel-spa.svg?style=flat-square)](https://packagist.org/packages/mmedia/laravel-spa)
-![GitHub Actions](https://github.com/mmedia/laravel-spa/actions/workflows/main.yml/badge.svg)
 
 Because Fortify is designed to be frontend agnostic, it requires some configuration if you'd like to use it with an SPA on a subdomain and Sanctum. This package provides the required configurations for that.
 
