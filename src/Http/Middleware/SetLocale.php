@@ -18,8 +18,12 @@ class SetLocale
      */
     public function handle(Request $request, Closure $next)
     {
-        $locale = $request->header('Accept-Language');
-        app()->setLocale($locale);
+        try {
+            $locale = $request->header('Accept-Language');
+            app()->setLocale($locale);
+        } catch (\Exception $e) {
+            Log::error('Failed to set locale: ' . $e->getMessage());
+        }
         return $next($request);
     }
 }
