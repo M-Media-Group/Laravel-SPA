@@ -23,7 +23,7 @@ class SetLocale
             $locale = $request->header('Accept-Language');
             app()->setLocale($locale);
         } catch (\Exception $e) {
-            Log::error('Failed to set locale: ' . $e->getMessage());
+            Log::warning('Failed to set locale: ' . $e->getMessage());
         }
         return $next($request);
     }
